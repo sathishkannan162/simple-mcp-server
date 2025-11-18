@@ -1,11 +1,12 @@
+import { config } from "dotenv";
 import express from "express";
+
 const app = express();
 const port = 4000;
-import { config } from "dotenv";
 
 config();
 
-app.get("/ping", (req, res) => {
+app.get("/ping", (_req, res) => {
   res.send("pong");
 });
 
