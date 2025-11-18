@@ -1,6 +1,9 @@
 import express from "express";
 const app = express();
 const port = 4000;
+import { config } from "dotenv";
+
+config();
 
 app.get("/ping", (req, res) => {
   res.send("pong");
