@@ -18,8 +18,11 @@ server.registerTool(
   {
     title: "Addition Tool",
     description: "Add two numbers",
-    inputSchema: { a: z.number(), b: z.number() },
-    outputSchema: { result: z.number() },
+    inputSchema: {
+      a: z.number().describe("First number"),
+      b: z.number().describe("Second number"),
+    },
+    outputSchema: { result: z.number().describe("Result") },
   },
   // biome-ignore lint/suspicious/useAwait: test code
   async ({ a, b }) => {
