@@ -7,7 +7,7 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import dotenv from "dotenv";
 import express from "express";
 import pg from "pg";
-import { z } from "zod";
+import z from "zod";
 
 dotenv.config();
 
@@ -15,7 +15,6 @@ const DATABASE_URL = process.env.DATABASE_URL;
 const pool = new pg.Pool({
   connectionString: DATABASE_URL,
 });
-console.log(DATABASE_URL, "env");
 const SCHEMA_PATH = "schema";
 
 // Create an MCP server
@@ -93,7 +92,7 @@ server.registerTool(
   "execute-read-queries",
   {
     title: "Query Runner",
-    description: "Runs a read-only query",
+    description: "Runs a read-only query in postgres",
     inputSchema: {
       sql: z.string().describe("Read-only query"),
     },
@@ -147,7 +146,7 @@ app.post("/mcp", async (req, res) => {
   await transport.handleRequest(req, res, req.body);
 });
 
-const port = Number.parseInt(process.env.PORT || "3000", 10);
+const port = Number.parseInt(process.env.PORT || "8080", 10);
 app
   .listen(port, () => {
     console.log(`Demo MCP Server running on http://localhost:${port}/mcp`);

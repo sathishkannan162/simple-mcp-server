@@ -1,13 +1,17 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
+
+    "rootDir": "src",
+    "outDir": "dist",
+
     "module": "nodenext",
-    "target": "esnext",
+    "target": "ES2022",
     "types": ["node"],
+    "esModuleInterop": true,
 
     "sourceMap": true,
     "declaration": true,
@@ -22,5 +26,7 @@
     "moduleDetection": "force",
     "skipLibCheck": true
   },
-  "exclude": ["node_modules"]
+
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
