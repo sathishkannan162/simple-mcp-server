@@ -4,6 +4,7 @@ import {
   ResourceTemplate,
 } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import pg from "pg";
@@ -125,6 +126,7 @@ server.registerTool(
 
 // Set up Express and HTTP transport
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (_req, res) => {
